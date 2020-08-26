@@ -97,3 +97,117 @@ In above example, state is updated based on props received. But if the component
 
 - Data down action up approach can be used which emphasizes unidirectional data flow. This approach prioritizes passing down data from one part of application down its children components. The children component has readonly access to the data but it cannot modify the data directly. Instead, the children component can have access to actions or callbacks which can be used to update the data in parent component.
 
+## Common promise anti-pattern
+Developers working with `promises` and `async await` in JavaScript can make common mistakes which can introduce confusing blogs in an application.
+
+```javascript
+loadSomething().then(function(something) {
+    loadAnotherthing().then(function(another) {
+                    DoSomethingOnThem(something, another);
+    });
+});
+```
+
+### Solution
+
+This makes it difficult to refactor the codebase and nesting of promises can introduce bugs if not handled correctly. A cleaner way could be use of `promise.all`
+
+```javascript
+promise.all([loadSomething(), loadAnotherThing()])
+ .spread(function(something, another) {
+ doSomethingOnThem(something, another);
+});
+```
+
+ In case you are using `async await`
+
+ ```javascript
+ const async myFunction(){
+  const res1 = await dataFromApi()
+  const res2 = await dataFromAnotherApi()  
+  doSomething(res1) //blocked by dataFromAnotherApi which is wrong
+}
+```
+
+`async await` in a function blocks the execution of the code until the response is resolved. So, if the variable does not even depend on the promise to be resolved, it can be considered as an anti-pattern as in above example.
+
+## Using setState
+
+The setState is pretty simple & straight forward concept in React. But developers might over look some of the nuisances when using `setState`
+
+Consider the following:
+
+```javascript
+class MyComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 350
+    };
+  }
+updateCounter() {
+    // this line will not work
+    this.state.counter = this.state.counter + this.props.increment;
+ 
+    // this will not work as intended
+    this.setState({
+      counter: this.state.counter + this.props.increment; 
+    });
+    
+  }
+  ...
+}
+```
+
+The `setState` method is asynchronous. Hence, we should not use the use the value state itself inside `setState` as above. 
+
+We can use the following syntax to avoid the issue:
+
+```javascript
+this.setState((prevState, props) => ({
+  counter: prevState.counter + props.increment
+}));
+```
+
+`prevState` is a name that given to the argument passed to `setState` callback function. It holds is the value of state before the `setState` was triggered by React.
+
+
+## async functions in useEffect
+
+It is necessary that we use async api calls using `useEffect` hook. 
+So, we might be inclined to write something like this:
+
+```javascript
+useEffect(async () => {
+    try {
+        const response = await fetch(http://hn.algolia.com/api/v1');
+        setData(response)
+    } catch (e) {
+        console.error(e);
+    }
+}, []);
+```
+
+According to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncFunction), The async function declaration defines an asynchronous function, which returns an AsyncFunction object. However, an effect hook must return nothing or a clean up function. We then get a warning about `useEffect` must return a cleanup function or nothing. The correct approach would be as below:
+
+```javascript
+useEffect(() => {
+   const fetchData = async () => {
+   const result = await axios('https://hn.algolia.com/api/v1');
+   setData(result.data);
+};
+  fetchData();
+}, []);
+```
+
+## Multiple useState hooks
+
+```javascript
+const [user, setUser] = useState('');
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState('');
+```
+
+We should always use multiple `useState` hooks instead of one big one like in `setState` because the react hooks has changed how react internally handles updates to objects within the state. In class based components, calling `setState` would merge new values into the existing state object. 
+
+If there were keys whose values had not changes, there would not be any need to replace the existing values at those keys. However, `useState` hook entirely replaces the underlying value. If we had an object with all state properties, we would be replacing the entire state on every update with `useState` hooks. So, we need to split of states into multiple hooks so that the react engine replaces the states in isolation.
