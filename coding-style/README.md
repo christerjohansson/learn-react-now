@@ -2,4 +2,4 @@
 
 **Disclaimer:**
 
-This section is purely to familiarize oneself with different coding styles out there. It is not a set of coding standards or conventions!
+This chapter is purely focused on familiarizing yourself with different coding styles. It is not a set of coding standards nor conventions.
