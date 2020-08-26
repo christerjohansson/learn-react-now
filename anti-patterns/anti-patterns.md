@@ -1,8 +1,4 @@
----
-description: Introduction to anti-patterns
----
-
-# Anti-patterns
+# Introduction
 
 Familiarizing ourselves with common anti-patterns will help us understand how React works and describe useful forms of refactoring our code.
 
