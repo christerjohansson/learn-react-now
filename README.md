@@ -1,12 +1,12 @@
-# Introduction
+---
+description: 'A compilation of React Patterns, techniques, tips and tricks.'
+---
 
-A compilation of React Patterns, techniques, tips and tricks.
+# Table of Content
 
-**Gitbook format**: [https://christerjohansson.gitbooks.io/learn-react-now](https://christerjohansson.gitbooks.io/learn-react-now)
+**Github repo for this book**: [https://github.com/christerjohansson/learns-react-now](https://github.com/christerjohansson/learns-react-now)
 
-**Github repo**: [https://github.com/christerjohansson/learns-react-now](https://github.com/christerjohansson/learns-react-now)
-
-> Feel free to contribute to this book by making a pull request
+> Feel free to contribute to this book by making a pull request on Github.
 
 * Design Patterns and Techniques
   * [Conditional in JSX](design-patterns-and-techniques/18.conditionals-in-jsx.md)

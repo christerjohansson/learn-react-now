@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Introduction](README.md)
+* [Table of Content](README.md)
 * [Design Patterns and Techniques](design-patterns-and-techniques/README.md)
   * [Conditional in JSX](design-patterns-and-techniques/18.conditionals-in-jsx.md)
   * [Async Nature Of setState\(\)](design-patterns-and-techniques/19.async-nature-of-setstate.md)
@@ -28,6 +28,7 @@
   * [Mutating State](anti-patterns/05.mutating-state.md)
   * [Using Indexes as Key](anti-patterns/06.using-indexes-as-key.md)
   * [Spreading Props on DOM elements](anti-patterns/07.spreading-props-dom.md)
+* [Coding Styles](coding-styles.md)
 * [Handling UX Variations](handling-ux-variations/README.md)
   * [Introduction](handling-ux-variations/ux-variations.md)
   * [Composing UX Variations](handling-ux-variations/01.composing-variations.md)
@@ -36,7 +37,7 @@
   * [HOC props proxy](handling-ux-variations/04.hoc-props-proxy.md)
   * [Wrapper Components](handling-ux-variations/05.wrapper-components.md)
   * [Display Order Variations](handling-ux-variations/06.display-order-variations.md)
-* [Perf Tips](perf-tips/README.md)
+* [Performance Tips](perf-tips/README.md)
   * [Introduction](perf-tips/perf-tips.md)
   * [shouldComponentUpdate\(\) check](perf-tips/01.shouldcomponentupdate-check.md)
   * [Using Pure Components](perf-tips/02.pure-component.md)

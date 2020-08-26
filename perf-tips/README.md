@@ -1,2 +1,2 @@
-# Perf Tips
+# Performance Tips
 
