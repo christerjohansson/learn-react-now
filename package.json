@@ -1,0 +1,10 @@
+{
+  "name": "learn-react-now",
+  "version": "3.0.1",
+  "repository": "https://github.com/christerjohansson/learn-react-now.git",
+  "author": "Christer Johansson",
+  "license": "MIT",
+  "scripts": {
+    "docs": "gitbook serve"
+  }
+}
