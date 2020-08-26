@@ -4,7 +4,7 @@ A compilation of React Patterns, techniques, tips and tricks.
 
 **Gitbook format**: https://christerjohansson.gitbooks.io/learn-react-now
 
-**Github repo**: https://github.com/christerjohansson
+**Github repo**: https://github.com/christerjohansson/learns-react-now
 
 > Feel free to contribute to this book by making a pull request
 
